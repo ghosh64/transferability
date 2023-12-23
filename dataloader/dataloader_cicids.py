@@ -169,7 +169,6 @@ class dataset_cicids(Dataset):
             a['dataset']=dataset
             a['labels']=labels
             a['classes']=classes_exact
-            if not os.path.exists(self.path+f'device_{dev}/'): os.makedirs(self.path+f'device_{dev}/')
             with open(self.path+f'device_{dev}/'+f'dataset_{mode}.txt','wb') as f: pickle.dump(a,f)
         return 
         
