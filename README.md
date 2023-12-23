@@ -21,9 +21,9 @@ To run the bootstrapped version of (1) and (2), run main_bootstrap.py
 
 Other supported parameters include:
 
---n_classes    2,5(default)
+  --n_classes    2,5(default)
 
---algo         FedAvg(default)
+  --algo         FedAvg(default)
 
 --device       0(default) GPU
 
