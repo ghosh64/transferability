@@ -5,8 +5,6 @@ import torch
 import torch.optim as optimizer
 import torch.nn as nn
 from torch.utils.data import DataLoader
-#from dataloader.dataloader_nsskdd import dataset_whole
-#from dataloader.dataloader_federated import dataset,dataset_transfer
 from dataloader.dataloader_cicids import dataset_cicids
 from models import cldnn
 from tqdm import tqdm
