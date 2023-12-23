@@ -16,6 +16,7 @@ class dataset_cicids(Dataset):
     def __init__(self,
                  device, 
                  path='datasets/',
+                 dataset_loc='../',
                  train=False,
                  test=False,
                  val=False,
@@ -32,6 +33,7 @@ class dataset_cicids(Dataset):
         self.device=device
         self.n_devices=5
         self.transform=transform
+        self.dataset_loc=dataset_loc
         self.two_class=two_class if not self.separate_nodes else True
         self.mode='train' if train else 'val' if val else 'test'
         if self.separate_nodes:self.n_devices=11
@@ -169,19 +171,20 @@ class dataset_cicids(Dataset):
             a['dataset']=dataset
             a['labels']=labels
             a['classes']=classes_exact
+            if not os.path.exists(self.path+f'device_{dev}/'): os.makedirs(self.path+f'device_{dev}')
             with open(self.path+f'device_{dev}/'+f'dataset_{mode}.txt','wb') as f: pickle.dump(a,f)
         return 
         
         
     def read_csvs(self):
-        dataset=pd.read_csv('../../MachineLearningCVE/Tuesday-WorkingHours.pcap_ISCX.csv')
-        dataset_1=pd.read_csv('../../MachineLearningCVE/Monday-WorkingHours.pcap_ISCX.csv')
-        dataset_2=pd.read_csv('../../MachineLearningCVE/Friday-WorkingHours-Afternoon-PortScan.pcap_ISCX.csv')
-        dataset_3=pd.read_csv('../../MachineLearningCVE/Friday-WorkingHours-Afternoon-DDos.pcap_ISCX.csv')
-        dataset_4=pd.read_csv('../../MachineLearningCVE/Thursday-WorkingHours-Afternoon-Infilteration.pcap_ISCX.csv')
-        dataset_5=pd.read_csv('../../MachineLearningCVE/Thursday-WorkingHours-Morning-WebAttacks.pcap_ISCX.csv')
-        dataset_6=pd.read_csv('../../MachineLearningCVE/Wednesday-workingHours.pcap_ISCX.csv')
-        dataset_7=pd.read_csv('../../MachineLearningCVE/Friday-WorkingHours-Morning.pcap_ISCX.csv')
+        dataset=pd.read_csv(f'{self.dataset_loc}'+'MachineLearningCVE/Tuesday-WorkingHours.pcap_ISCX.csv')
+        dataset_1=pd.read_csv(f'{self.dataset_loc}'+'MachineLearningCVE/Monday-WorkingHours.pcap_ISCX.csv')
+        dataset_2=pd.read_csv(f'{self.dataset_loc}'+'MachineLearningCVE/Friday-WorkingHours-Afternoon-PortScan.pcap_ISCX.csv')
+        dataset_3=pd.read_csv(f'{self.dataset_loc}'+'MachineLearningCVE/Friday-WorkingHours-Afternoon-DDos.pcap_ISCX.csv')
+        dataset_4=pd.read_csv(f'{self.dataset_loc}'+'MachineLearningCVE/Thursday-WorkingHours-Afternoon-Infilteration.pcap_ISCX.csv')
+        dataset_5=pd.read_csv(f'{self.dataset_loc}'+'MachineLearningCVE/Thursday-WorkingHours-Morning-WebAttacks.pcap_ISCX.csv')
+        dataset_6=pd.read_csv(f'{self.dataset_loc}'+'MachineLearningCVE/Wednesday-workingHours.pcap_ISCX.csv')
+        dataset_7=pd.read_csv(f'{self.dataset_loc}'+'MachineLearningCVE/Friday-WorkingHours-Morning.pcap_ISCX.csv')
         
         #consolidate csvs here
         dataset=dataset.append(dataset_1, ignore_index=True)
