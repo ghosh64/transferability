@@ -17,6 +17,8 @@ Run main.py to start training and testing. This script can be run in two modes:
 
 To start training, run: python main.py
 
+To run the bootstrapped version of (1) and (2), run main_bootstrap.py
+
 Other supported parameters include:
 
 --n_classes    2,5(default)
