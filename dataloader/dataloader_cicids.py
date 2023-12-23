@@ -231,8 +231,8 @@ class dataset_cicids(Dataset):
             labels[device]=[np.where(y_attacks==labels[device][i])[0][0] for i in range(len(labels[device]))]
         return labels
     def get_exact_labels_one_device(self, labels,y_attacks):
-        print(np.array(y_attacks))
-        print(np.unique(labels))
+        #print(np.array(y_attacks))
+        #print(np.unique(labels))
         labels=[np.where(y_attacks==labels[i])[0][0] for i in range(len(labels))]
         return labels
     
