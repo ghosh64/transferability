@@ -21,27 +21,23 @@ To run the bootstrapped version of (1) and (2), run main_bootstrap.py
 
 Other supported parameters include:
 
-    --n_classes    2,5(default)
+    --n_classes    2,11
     
     --algo         FedAvg(default)
     
     --device       0(default) GPU
     
-    --silobn       True(default),False
-    
     --weight_path  weights/
     
     --tb_path      tensorboard/
     
-    --transferability True/False(default)
+    --transferability True/False
     
     --cf           path of the saved confusion matrix
     
     --n_rounds     number of communication rounds
     
     --tmp          enable temporal averaging of data as a preprocessing step
-    
-    --diff         enable differential inputs as a preprocessing step
     
     --epochs       no of epochs of training for each device
 
